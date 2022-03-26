@@ -1,0 +1,12 @@
+﻿@model Test3Class.Models.Subject
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Add</h1>
+<form asp-action="Edit" asp-controller="Subject" method="post">
+    <input asp-for="SubjectId" type="hidden" />
+    <input asp-for="SubjectName" placeholder="Subject Name" />
+    <br /><br />
+    <button type="submit">Edit</button>
+</form>

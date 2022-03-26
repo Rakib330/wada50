@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Test3Class.Models.Subject>
+<div>
+    <h4>Partial</h4>
+    <hr />
+    <a asp-action="Add">Add New</a>
+    <table border="1" width="50%">
+        <tr>
+           
+            <td>Subject Name</td>
+            <td>...</td>
+        </tr>
+         @foreach(var m in Model){
+        <tr>
+           
+            <td>@m.SubjectName</td>
+            
+            <td>
+                <a asp-action="Edit" asp-controller="Subject" asp-route-id="@m.SubjectId">Edit</a>
+                @if(m.Student.Count() > 0){
+                    <span>Tata</span>
+                }
+                else
+                {
+                    <a asp-action="Delete" asp-controller="Subject" asp-route-id="@m.SubjectId">Delete</a>
+                }
+            </td>
+        </tr>
+         }
+    </table>
+</div>

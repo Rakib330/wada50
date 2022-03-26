@@ -1,0 +1,28 @@
+﻿<div>
+    <h4>Student</h4>
+    <hr />
+    <a asp-action="Add">Add New</a>
+    <table border="1" width="50%">
+        <tr>
+            <td></td>
+            <td>Student Name</td>
+            <td>Roll</td>
+            <td>status</td>
+            <td>Subject</td>
+            <td>...</td>
+        </tr>
+         @foreach(var m in Model){
+        <tr>
+            <td><img src="~/Uploads/@m.Photo" width="50"/></td>
+            <td>@m.StudentName</td>
+            <td>@m.Roll</td>
+            <td>@m.Status</td>
+            <td>@m.Subject.SubjectName</td>
+            <td>
+                <a asp-action="Edit" asp-controller="Home" asp-route-id="@m.StudentId">Edit</a>
+                <a asp-action="Delete" asp-controller="Home" asp-route-id="@m.StudentId">Delete</a>
+            </td>
+        </tr>
+         }
+    </table>
+</div>

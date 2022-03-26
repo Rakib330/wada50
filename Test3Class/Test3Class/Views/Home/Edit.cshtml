@@ -1,0 +1,23 @@
+﻿@model Test3Class.ViewModel.StudentModel
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Add</h1>
+<form asp-action="Edit" asp-controller="Home" method="post" enctype="multipart/form-data">
+    <input asp-for="StudentId" type="hidden" />
+    <input asp-for="StudentName" placeholder="Student Name" />
+    <br /><br />
+    <input asp-for="Roll" placeholder="Roll" />
+    <br /><br />
+    <span>Status</span>
+    <input asp-for="Status" type="checkbox" />
+    <br /><br />
+    <Select asp-for="SubjectId" asp-items="@(new SelectList(ViewBag.Subs,"SubjectId","SubjectName"))" >
+        <option value="">Select</option>
+    </Select>
+    <br /><br />
+    <input asp-for="Photo" type="file" />
+    <br /><br />
+    <button type="submit">Edit</button>
+</form>
