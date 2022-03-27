@@ -1,0 +1,61 @@
+﻿@model IEnumerable<NextWorld.Models.Trainee>
+@{
+    ViewBag.Title = "Index";
+}
+@section style{
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+} 
+<h2>Home Trainee</h2>
+@Html.ActionLink("Add New","Add","Home",new { },new { @class = "btn btn-success float-end" })
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Course</th>
+            <th scope="col">...</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() > 0)
+        {
+            foreach (var e in Model)
+            {
+        <tr>
+            <th scope="row">@e.TraineeNo</th>
+            <td>@e.TraineeName</td>
+            <td>@e.TraineeEmail</td>
+            <td>@e.TraineeCourse</td>
+            <td>
+                <a class="btn btn-primary" href="@Url.Action("Edit", "Home", new {id=e.TraineeNo})"><i class="fa fa-edit"></i></a>
+                <a class="btn btn-danger" href="@Url.Action("Delete", "Home", new {id=e.TraineeNo})"><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+            }
+        }
+        else
+        {
+                <tr>
+                    <th colspan="5" scope="row">No Data Found</th>
+                </tr>
+        }
+    </tbody>
+</table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination d-flex justify-content-end">
+        @if (ViewBag.CurrentPage > 1)
+        {
+            <li class="page-item"><a class="page-link" href="@Url.Action("Index", "Home", new {pg=ViewBag.CurrentPage-1})">Previous</a></li>
+        }
+        @for (var i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <li class="page-item @(ViewBag.CurrentPage == i ? "active" : "") "><a class="page-link" href="@Url.Action("Index", "Home", new {pg=i})">@i</a></li>
+        }
+        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+        {
+            <li class="page-item"><a class="page-link" href="@Url.Action("Index", "Home", new {pg=ViewBag.CurrentPage+1})">Next</a></li>
+        }
+    </ul>
+</nav>
+

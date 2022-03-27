@@ -1,0 +1,40 @@
+﻿@model NextWorld.Models.Trainee
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add</h2>
+@using (Html.BeginForm())
+{
+    <div class="row mb-3">
+        @Html.LabelFor(x => x.TraineeName, new { @class = "col-sm-2 col-form-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.TraineeName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.TraineeName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row mb-3">
+        @Html.LabelFor(x => x.TraineeEmail, new { @class = "col-sm-2 col-form-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.TraineeEmail, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.TraineeEmail, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row mb-3">
+        @Html.LabelFor(x => x.TraineeCourse, new { @class = "col-sm-2 col-form-label" })
+        <div class="col-sm-10">
+            @Html.EnumDropDownListFor(x => x.TraineeCourse, "--Select--", new { @class = "form-select" })
+            @Html.ValidationMessageFor(x => x.TraineeCourse, "", new { @class = "text-danger" })
+        </div>
+
+    </div>
+    <button type="submit" class="btn btn-primary">Add Info</button>
+    @Html.ActionLink("Back to Home", "Index", "Home", new { }, new { @class = "text-primary d-block" })
+}
+@section script{
+
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}
+
